@@ -55,47 +55,14 @@
 } ());
 
 function InitializeGaugeAndDial() {
-    InitializeGauge();
-    InitializeDial();
+    InitializeDial("#dialLeft");
+    InitializeDial("#dialRight");
 }
 
-function InitializeGauge() {
 
-    //var value = $("#gauge-value").val();
-    //var dashboard = io('localhost:3000/dashboard')
-    $("#gauge").kendoLinearGauge({
-        pointer: {
-            value: 10
-        },
+function InitializeDial(dialName) {
 
-        scale: {
-            majorUnit: 20,
-            minorUnit: 2,
-            min: -40,
-            max: 60,
-            vertical: true,
-            ranges: [
-                          {
-                              from: -40,
-                              to: -20,
-                              color: "#2798df"
-                          }, {
-                              from: 30,
-                              to: 45,
-                              color: "#ffc700"
-                          }, {
-                              from: 45,
-                              to: 60,
-                              color: "#c20000"
-                          }
-                      ]
-        }
-    });
-
-}
-
-function InitializeDial() {
-    $("#dial").kendoRadialGauge({
+    $(dialName).kendoRadialGauge({
         pointer:
          [
             { value: 100 }, { value: 200 }, { value: 300 }
@@ -140,6 +107,8 @@ function InitializeDial() {
         }
     });
 }
+
+
 
 
 
@@ -219,4 +188,38 @@ function InitializeGrid() {
 }
 
 
+function InitializeGauge() {
+
+    //var value = $("#gauge-value").val();
+    //var dashboard = io('localhost:3000/dashboard')
+    $("#gauge").kendoLinearGauge({
+        pointer: {
+            value: 10
+        },
+
+        scale: {
+            majorUnit: 20,
+            minorUnit: 2,
+            min: -40,
+            max: 60,
+            vertical: true,
+            ranges: [
+                          {
+                              from: -40,
+                              to: -20,
+                              color: "#2798df"
+                          }, {
+                              from: 30,
+                              to: 45,
+                              color: "#ffc700"
+                          }, {
+                              from: 45,
+                              to: 60,
+                              color: "#c20000"
+                          }
+                      ]
+        }
+    });
+
+}
 

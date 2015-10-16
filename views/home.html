@@ -3,8 +3,12 @@
 
 <div style="width: 100%; display: table;">
     <div style="display: table-row">
-        <div id="gauge" style="width: 600px; height: 500px; display: table-cell;"> Left </div>
+<!--        <div id="gauge" style="width: 600px; height: 500px; display: table-cell;"> Left </div>
         <div id="dial" style="display: table-cell;"> Right </div>
+-->               
+        <div id="dialLeft" style="width: 500px; height: 500px; display: table-cell;"> Left </div>
+        <div id="dialRight" style="display: table-cell;"> Right </div>
+ 
     </div>
 <!--     <input type="button" value="Thermometer" onclick="IncrementGaugeDial();">
      <input type="button" value="Dial" onclick="IncrementGaugeDial();">-->
@@ -23,27 +27,36 @@
 
     var newGaugeValue ;
     var newDialValue;
-    function IncrementGaugeDial(data) {
-        var gauge = $("#gauge").data("kendoLinearGauge");
+    var newDialValue2;
+  function IncrementGaugeDial(data) {
+//        var gauge = $("#gauge").data("kendoLinearGauge");
 
-        if (isNaN(newGaugeValue))
-            newGaugeValue = 0;
-        newGaugeValue = newGaugeValue + data.orderQtyDelta;
-        console.log("Gauge Value: " + newGaugeValue + "Order Qty Delta:" + data.orderQtyDelta);
-        gauge.value(newGaugeValue);
-        //gauge.redraw();
+//        if (isNaN(newGaugeValue))
+//            newGaugeValue = 0;
+//        newGaugeValue = newGaugeValue + data.orderQtyDelta;
+//        console.log("Gauge Value: " + newGaugeValue + "Order Qty Delta:" + data.orderQtyDelta);
+//        gauge.value(newGaugeValue);
+//        //gauge.redraw();
 
-        var dial = $("#dial").data("kendoRadialGauge");
+        var dialLeft = $("#dialLeft").data("kendoRadialGauge");
  
         if (isNaN(newDialValue))
             newDialValue = 0;
 
-        newDialValue = newDialValue + data.completedQtyDelta;
-        console.log("Dial Value: " + newGaugeValue + "Completed Qty Delta:" + data.completedQtyDelta);
-        dial.value(newDialValue);
+        newDialValue = newDialValue + data.orderQtyDelta;
+        console.log("Dial Value: " + newDialValue + "Order Qty Delta:" + data.orderQtyDelta);
+        dialLeft.value(newDialValue);
         //dial.allValues(newDialValue);
         //dial.redraw();
 
+        var dialRight = $("#dialRight").data("kendoRadialGauge");
+
+        if (isNaN(newDialValue2))
+            newDialValue2 = 0;
+
+        newDialValue2 = newDialValue2 + data.completedQtyDelta;
+        console.log("Dial Value: " + newDialValue2 + "Completed Qty Delta:" + data.completedQtyDelta);
+        dialRight.value(newDialValue2);
     }
 </script>
 
