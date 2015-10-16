@@ -1,0 +1,35 @@
+<div data-role="view" data-title="Dashboard1" data-layout="main" data-model="APP.models.home" data-show="APP.models.home.initalize">
+  <h1 data-bind="html: title"></h1>
+
+  <div id="example" class="k-content" >
+         <div id="gauge"></div>
+
+<!-- <input type="button" value="Increment Gauge" onclick="IncrementGauge();">    -->
+   </div>
+
+  
+
+</div>
+
+ <script src="../bower_components/socket.io-client/socket.io.js"></script>
+
+<script>
+  var consumer = io('http://127.0.0.1:3000/consumer');
+
+    consumer.on('dataUpdate', function (data) {
+        console.log(data);
+        IncrementGauge(data);
+    });
+
+    var newGaugeValue ;
+    function IncrementGauge(data) {
+        var gauge = $("#gauge").data("kendoLinearGauge");
+        if (isNaN(newGaugeValue))
+            newGaugeValue = 0;
+        newGaugeValue = newGaugeValue + data.completedQtyDelta;       
+        gauge.value(newGaugeValue);
+        gauge.redraw();
+    }
+</script>
+
+

@@ -1,0 +1,29 @@
+<div data-role="view" data-title="Orders" data-layout="main" data-model="APP.models.settings" data-show="APP.models.settings.initalize">
+  <h1 data-bind="html: title"></h1>
+
+    <div id="example" class="k-content" >
+         <div id="grid"></div>                
+   </div>
+</div>
+
+
+<script src="../bower_components/socket.io-client/socket.io.js"></script>
+
+<script>
+//    var consumer = io('http://127.0.0.1:3000/consumer');
+
+//    consumer.on('stats-updated', function (update) {
+//        console.log("received");
+//    });
+
+    var newGaugeValue;
+    function IncrementGauge() {
+
+        var gauge = $("#gauge").data("kendoLinearGauge");
+        newGaugeValue = newGaugeValue + 10;
+        if (isNaN(newGaugeValue))
+            newGaugeValue = 0;
+        gauge.value(newGaugeValue);
+        gauge.redraw();
+    }
+</script>

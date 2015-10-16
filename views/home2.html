@@ -1,0 +1,34 @@
+<div data-role="view" data-title="Dashboard" data-layout="main" data-model="APP.models.home" data-show="APP.models.home.initalize">
+  <h1 data-bind="html: title"></h1>
+
+<div style="width: 100%; display: table;">
+    <div style="display: table-row">
+        <div id="gauge" style="width: 600px; height: 500px; display: table-cell;"> Left </div>
+        <div id="dial" style="display: table-cell;"> Right </div>
+    </div>
+     <input type="button" value="Thermometer" onclick="IncrementGauge();">
+     <input type="button" value="Dial" onclick="IncrementDial();">
+</div>
+
+ <script src="../bower_components/socket.io-client/socket.io.js"></script>
+
+<script>
+  var consumer = io('http://127.0.0.1:3000/consumer');
+
+    consumer.on('dataUpdate', function (data) {
+        console.log(data);
+        IncrementGauge(data);
+    });
+
+    var newGaugeValue ;
+    function IncrementGauge(data) {
+        var gauge = $("#gauge").data("kendoLinearGauge");
+        if (isNaN(newGaugeValue))
+            newGaugeValue = 0;
+        newGaugeValue = newGaugeValue + data.completedQtyDelta;       
+        gauge.value(newGaugeValue);
+        gauge.redraw();
+    }
+</script>
+
+
