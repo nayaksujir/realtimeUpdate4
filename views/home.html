@@ -1,17 +1,22 @@
 <div data-role="view" data-title="Dashboard" data-layout="main" data-model="APP.models.home" data-show="APP.models.home.initalize">
-  <h1 data-bind="html: title"></h1>
+<!--  <h1 data-bind="html: title"></h1>-->
 
-<div style="width: 100%; display: table;">
-    <div style="display: table-row">
-<!--        <div id="gauge" style="width: 600px; height: 500px; display: table-cell;"> Left </div>
-        <div id="dial" style="display: table-cell;"> Right </div>
--->               
-        <div id="dialLeft" style="width: 500px; height: 500px; display: table-cell;"> Left </div>
-        <div id="dialRight" style="display: table-cell;"> Right </div>
- 
+    <div style="width: 100%; display: table;">
+        <div style="display: table-row" class="k-content">   
+                                
+                    <div id="gauge-container">                            
+                            <div id="dialLeft""> Left </div> 
+                            <h3>Ordered</h3>
+                                                                                          
+                    </div>
+                    <div id="gauge-container2">
+                            <div id="dialRight""> Left </div>   
+                            <h3>Completed</h3>                                                            
+                    </div>                  
+        </div>
     </div>
-<!--     <input type="button" value="Thermometer" onclick="IncrementGaugeDial();">
-     <input type="button" value="Dial" onclick="IncrementGaugeDial();">-->
+
+
 </div>
 
 

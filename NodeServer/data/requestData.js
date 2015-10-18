@@ -101,7 +101,7 @@ function callLocalRead() {
     fs.readFile(refreshFileName, 'utf8', function (error, body) {
 
         if (error) throw error;
-        //console.log("New Json is" + newJson);
+        console.log("New Json is" + newJson);
         if (undefined != oldJson) {
             //console.log(diffJson(oldJson, newJson));
             newJson = cleanJson(body);

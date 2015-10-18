@@ -9,15 +9,15 @@
     window.APP = {
       models: {
         home: {
-          title: 'Home',
+          title: '----- Quantity Ordered ----- Quantity Received -----',
           initalize: InitializeGaugeAndDial
         },
         settings: {
-          title: 'Settings',
+          title: '',
           initalize: InitializeGrid
         },
         contacts: {
-          title: 'Contacts',
+          title: '',
           ds: new kendo.data.DataSource({
               data: [{ id: 1, name: 'Bob' }, { id: 2, name: 'Mary' }, { id: 3, name: 'John' }, { id: 4, name: 'Shilpa'}]
           }),
@@ -55,55 +55,53 @@
 } ());
 
 function InitializeGaugeAndDial() {
-    InitializeDial("#dialLeft");
-    InitializeDial("#dialRight");
+    InitializeDial("#dialLeft", 95000);
+
+    InitializeDial("#dialRight", 43000);
 }
 
 
-function InitializeDial(dialName) {
+function InitializeDial(dialName, initialValue) {
 
     $(dialName).kendoRadialGauge({
-        pointer:
-         [
-            { value: 100 }, { value: 200 }, { value: 300 }
-        // <div id="gauge"></div> <script> $("#gauge").kendoRadialGauge({ pointer: [{ value: 20 }, { value: 40 }] }); <script>
-         ]
+        pointer:        
           [{
               //RED
-              value: 20,
+              value: initialValue,
               color: "#c20000",
               cap: { size: 0.15 }
           }, {
               //ORANGE
-              value: 70,
+              value: 175000,
               color: "#ff7a00",
               cap: { size: 0.1 }
           }, {
               //YELLOW
-              value: 140,
+              value: 125000,
               color: "#ffc700"
           }],
+        theme: "black",
         scale: {
-            majorUnit: 5000,
-            minorUnit: 1000,
+            majorUnit: 50000,
+            minorUnit: 10000,
             min: 0,
-            max: 20000,
+            max: 200000,
             vertical: true,
-            ranges: [
-                          {
-                              from: 0,
-                              to: 12500,
-                              color: "#22ff00"
-                          }, {
-                              from: 12500,
-                              to: 17500,
-                              color: "#fff700"
-                          }, {
-                              from: 17500,
-                              to: 20000,
-                              color: "#c20000"
-                          }
-                      ]
+//            ranges: [
+//                          {
+//                              from: 0,
+//                              to: 125000,
+//                              color: "#22ff00"
+//                          }, {
+//                              from: 125000,
+//                              to: 175000,
+//                              color: "#fff700"
+//                          }, {
+//                              from: 175000,
+//                              to: 200000,
+//                              color: "#c20000"
+//                          }
+//                      ]
         }
     });
 }
